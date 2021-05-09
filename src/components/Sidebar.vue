@@ -61,6 +61,76 @@ export default {
                     title: "系统首页"
                 },
                 {
+                  icon: "el-icon-lx-cascades",
+                  index: "1",
+                  title: "实验室信息管理",
+                  subs: [
+                    {
+                      index: "idle",
+                      title: "空闲实验室查询"
+                    },{
+                      index: "apply",
+                      title: "申请实验室"
+                    },{
+                      index: "timeTable",
+                      title: "课表查询"
+                    },{
+                      index: "applyStatu",
+                      title: "申请查询"
+                    },
+                  ]
+                },
+              {
+                icon: "el-icon-lx-cascades",
+                index: "2",
+                title: "光电设备使用申请",
+                subs: [
+                  {
+                    index: "useTraining",
+                    title: "使用培训"
+                  },{
+                    index: "useApply",
+                    title: "申请使用"
+                  },{
+                    index: "reviewApply",
+                    title: "审核申请"
+                  },
+                ]
+              },
+              {
+                icon: "el-icon-lx-cascades",
+                index: "personnel",
+                title: "实验室人员管理",
+              },
+              {
+                icon: "el-icon-lx-cascades",
+                index: "equipment",
+                title: "实验设备管理",
+              },
+              {
+                icon: "el-icon-lx-cascades",
+                index: "maintain",
+                title: "实验设备维护",
+              },
+              {
+                icon: "el-icon-lx-cascades",
+                index: "3",
+                title: "系统设置",
+                subs: [
+                  {
+                    index: "queryInfo",
+                    title: "查询信息"
+                  },{
+                    index: "modifyInfo",
+                    title: "修改个人信息"
+                  },{
+                    index: "resetPassword",
+                    title: "修改登录密码"
+                  },
+                ]
+              },
+
+                {
                     icon: "el-icon-lx-cascades",
                     index: "table",
                     title: "基础表格"
@@ -72,7 +142,7 @@ export default {
                 },
                 {
                     icon: "el-icon-lx-calendar",
-                    index: "3",
+                    index: "31",
                     title: "表单相关",
                     subs: [
                         {

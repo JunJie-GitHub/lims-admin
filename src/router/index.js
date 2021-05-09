@@ -19,14 +19,125 @@ const routes = [
                 component: () => import (
                 /* webpackChunkName: "dashboard" */
                 "../views/Dashboard.vue")
+            },
+            {
+                path: "/idle",
+                name: "idle",
+                meta: {
+                    title: '空闲实验室查询'
+                },
+                component: () => import (
+                    "../views/infoManagement/Idle.vue")
+            },{
+                path: "/apply",
+                name: "apply",
+                meta: {
+                    title: '申请实验室'
+                },
+                component: () => import (
+                    "../views/infoManagement/Apply.vue")
+            },{
+                path: "/timeTable",
+                name: "timeTable",
+                meta: {
+                    title: '课表查询'
+                },
+                component: () => import (
+                    "../views/infoManagement/TimeTable.vue")
+            },{
+                path: "/applyStatu",
+                name: "applyStatu",
+                meta: {
+                    title: '申请查询'
+                },
+                component: () => import (
+                    "../views/infoManagement/ApplyStatu.vue")
             }, {
+                path: "/useTraining",
+                name: "useTraining",
+                meta: {
+                    title: '使用培训'
+                },
+                component: () => import (
+                    "../views/equipmentApply/UseTraining.vue")
+            }, {
+                path: "/useApply",
+                name: "useApply",
+                meta: {
+                    title: '申请使用'
+                },
+                component: () => import (
+                    "../views/equipmentApply/UseApply.vue")
+            },{
+                path: "/reviewApply",
+                name: "reviewApply",
+                meta: {
+                    title: '审核申请'
+                },
+                component: () => import (
+                    "../views/equipmentApply/ReviewApply.vue")
+            },
+            {
+                path: "/personnel",
+                name: "personnel",
+                meta: {
+                    title: '实验室人员管理'
+                },
+                component: () => import (
+                    "../views/Personnel.vue")
+            },
+            {
+                path: "/equipment",
+                name: "equipment",
+                meta: {
+                    title: '实验设备管理'
+                },
+                component: () => import (
+                    "../views/Equipment.vue")
+            },
+            {
+                path: "/maintain",
+                name: "maintain",
+                meta: {
+                    title: '实验室设备维护'
+                },
+                component: () => import (
+                    "../views/Maintain.vue")
+            },
+            {
+                path: "/queryInfo",
+                name: "queryInfo",
+                meta: {
+                    title: '查询信息'
+                },
+                component: () => import (
+                    "../views/setting/QueryInfo.vue")
+            },
+            {
+                path: "/modifyInfo",
+                name: "modifyInfo",
+                meta: {
+                    title: '修改个人信息'
+                },
+                component: () => import (
+                    "../views/setting/ModifyInfo")
+            },
+            {
+                path: "/resetPassword",
+                name: "resetPassword",
+                meta: {
+                    title: '修改登录密码'
+                },
+                component: () => import (
+                    "../views/setting/ModifyInfo")
+            },
+            {
                 path: "/table",
                 name: "basetable",
                 meta: {
                     title: '表格'
                 },
                 component: () => import (
-                /* webpackChunkName: "table" */
                 "../views/BaseTable.vue")
             }, {
                 path: "/charts",
