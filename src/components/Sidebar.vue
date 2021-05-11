@@ -67,16 +67,17 @@ export default {
                   subs: [
                     {
                       index: "idle",
-                      title: "空闲实验室查询"
+                      title: "实验室查询"
                     },{
                       index: "apply",
                       title: "申请实验室"
                     },{
-                      index: "timeTable",
-                      title: "课表查询"
-                    },{
                       index: "applyStatu",
-                      title: "申请查询"
+                      title: "实验室申请查询"
+                    },
+                    {
+                      index: "dealApply",
+                      title: "处理申请"
                     },
                   ]
                 },
@@ -86,8 +87,8 @@ export default {
                 title: "光电设备使用申请",
                 subs: [
                   {
-                    index: "useTraining",
-                    title: "使用培训"
+                    index: "equipmentApply",
+                    title: "设备申请查询"
                   },{
                     index: "useApply",
                     title: "申请使用"
@@ -109,18 +110,26 @@ export default {
               },
               {
                 icon: "el-icon-lx-cascades",
-                index: "maintain",
+                index: "3",
                 title: "实验设备维护",
+                subs: [
+                  {
+                    index: "needRepaired",
+                    title: "待维修设备"
+                  },
+                  {
+                    index: "repairReport",
+                    title: "填写维修信息"
+                  },
+
+                ]
               },
               {
                 icon: "el-icon-lx-cascades",
-                index: "3",
+                index: "4",
                 title: "系统设置",
                 subs: [
                   {
-                    index: "queryInfo",
-                    title: "查询信息"
-                  },{
                     index: "modifyInfo",
                     title: "修改个人信息"
                   },{

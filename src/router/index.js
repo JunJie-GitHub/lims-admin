@@ -24,7 +24,7 @@ const routes = [
                 path: "/idle",
                 name: "idle",
                 meta: {
-                    title: '空闲实验室查询'
+                    title: '实验室查询'
                 },
                 component: () => import (
                     "../views/infoManagement/Idle.vue")
@@ -37,30 +37,30 @@ const routes = [
                 component: () => import (
                     "../views/infoManagement/Apply.vue")
             },{
-                path: "/timeTable",
-                name: "timeTable",
-                meta: {
-                    title: '课表查询'
-                },
-                component: () => import (
-                    "../views/infoManagement/TimeTable.vue")
-            },{
                 path: "/applyStatu",
                 name: "applyStatu",
                 meta: {
-                    title: '申请查询'
+                    title: '实验室申请查询'
                 },
                 component: () => import (
                     "../views/infoManagement/ApplyStatu.vue")
             }, {
-                path: "/useTraining",
-                name: "useTraining",
+                path: "/dealApply",
+                name: "dealApply",
                 meta: {
-                    title: '使用培训'
+                    title: '处理申请'
                 },
                 component: () => import (
-                    "../views/equipmentApply/UseTraining.vue")
+                    "../views/infoManagement/DealApply.vue")
             }, {
+                path: "/equipmentApply",
+                name: "equipmentApply",
+                meta: {
+                    title: '设备申请查询'
+                },
+                component: () => import (
+                    "../views/equipmentApply/EquipmentApply.vue")
+            },{
                 path: "/useApply",
                 name: "useApply",
                 meta: {
@@ -96,22 +96,22 @@ const routes = [
                     "../views/Equipment.vue")
             },
             {
-                path: "/maintain",
-                name: "maintain",
+                path: "/needRepaired",
+                name: "needRepaired",
                 meta: {
-                    title: '实验室设备维护'
+                    title: '待维修设备'
                 },
                 component: () => import (
-                    "../views/Maintain.vue")
+                    "../views/equipmentMaintain/NeedRepaired.vue")
             },
             {
-                path: "/queryInfo",
-                name: "queryInfo",
+                path: "/repairReport",
+                name: "repairReport",
                 meta: {
-                    title: '查询信息'
+                    title: '填写维修信息'
                 },
                 component: () => import (
-                    "../views/setting/QueryInfo.vue")
+                    "../views/equipmentMaintain/RepairReport.vue")
             },
             {
                 path: "/modifyInfo",
@@ -129,7 +129,7 @@ const routes = [
                     title: '修改登录密码'
                 },
                 component: () => import (
-                    "../views/setting/ModifyInfo")
+                    "../views/setting/ResetPassword")
             },
             {
                 path: "/table",

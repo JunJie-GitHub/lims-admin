@@ -8,17 +8,17 @@
     <el-table-column
         prop="name"
         label="姓名"
-        width="110">
+        width="105">
     </el-table-column>
     <el-table-column
         prop="student_name"
         label="学号"
-        width="110">
+        width="105">
     </el-table-column>
     <el-table-column
         prop="equipment_name"
         label="设备名"
-        width="110">
+        width="105">
     </el-table-column>
     <el-table-column
         prop="experiment_context"
@@ -33,27 +33,32 @@
     <el-table-column
         prop="startTime"
         label="开始使用时间"
-        width="180">
+        width="105">
     </el-table-column>
     <el-table-column
         prop="endTime"
         label="结束使用时间"
-        width="110">
+        width="105">
+    </el-table-column>
+    <el-table-column
+        prop="tutor"
+        label="指导老师"
+        width="105">
     </el-table-column>
     <el-table-column
         prop="state"
         label="审核状态"
-        width="110">
+        width="105">
     </el-table-column>
     <el-table-column label="操作">
       <template v-slot="scope">
         <el-button
             size="mini"
-            @click="handleEdit(scope.$index, scope.row)">同意</el-button>
+            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
         <el-button
             size="mini"
             type="danger"
-            @click="handleDelete(scope.$index, scope.row)">驳回</el-button>
+            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -63,7 +68,7 @@
 <script>
 
 export default {
-  name: "ReviesApply",
+  name: "EquipmentApply",
   data() {
     return {
       tableData: [{
