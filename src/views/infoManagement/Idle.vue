@@ -1,5 +1,5 @@
 <template>
-<!--  空闲实验室查询-->
+<!--  实验室查询-->
   <el-table
       :data="tableData"
       height="600"
@@ -35,7 +35,7 @@
 
 
 <script>
-
+import {getLaboratorys} from '@/api/laboratory'
 export default {
   name: "idle",
   data() {
@@ -84,6 +84,17 @@ export default {
         instructor: '扬娜拉',
       }]
     }
+  },
+  methods: {
+    getTableData(){
+       getLaboratorys().then(response => {
+          console.log(response.data)
+          this.tableData = response.data
+       })
+    }
+  },
+  mounted() {
+    this.getTableData()
   }
 }
 </script>

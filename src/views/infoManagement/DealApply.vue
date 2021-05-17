@@ -11,29 +11,20 @@
         width="130">
     </el-table-column>
     <el-table-column
-        prop="address"
-        label="地址"
-        width="130">
-    </el-table-column>
-    <el-table-column
-        prop="department"
-        label="院系"
-        width="130">
-    </el-table-column>
-    <el-table-column
-        prop="studentName"
+        prop="student"
         label="申请人"
         width="130">
     </el-table-column>
     <el-table-column
-        prop="studentId"
+        prop="studentName"
         label="学号"
         width="130">
     </el-table-column>
+
     <el-table-column
         prop="reason"
         label="申请理由"
-        width="180">
+        width="250">
     </el-table-column>
     <el-table-column
         prop="date"
@@ -61,7 +52,7 @@
 
 
 <script>
-
+import { listLaboratoryApplyToDealWith } from "@/api/laboratory"
 export default {
   name: "dealApply",
   data() {
@@ -69,26 +60,37 @@ export default {
       tableData: [{
         name: '光电实验室',
         address: '扬实二 2405',
-        department: '电子工程学院',
-        studentName: '黎俊杰',
-        studentId: '17320110',
+        student: '黎俊杰',
+        studentName: '17320110',
         reason: '做毕设',
         date: '2021-05-06',
         classTime: "1, 2, 3",
       }, {
         name: '光电实验室',
         address: '扬实二 2405',
-        department: '电子工程学院',
-        studentName: '黎俊杰',
-        studentId: '17320110',
+        student: '黎俊杰',
+        studentName: '17320110',
         reason: '做毕设',
         date: '2021-05-06',
         classTime: "1, 2, 3",
       },]
     }
+  },
+  methods: {
+    loadLaboratoryApplyData(){
+      listLaboratoryApplyToDealWith().then(response => {
+        if (response.success == true){
+          this.tableData = response.data;
+        }
+      })
+    }
+  },
+  mounted() {
+    this.loadLaboratoryApplyData()
   }
 }
 </script>
+
 
 <style scoped>
 

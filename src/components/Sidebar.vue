@@ -87,10 +87,13 @@ export default {
                 title: "光电设备使用申请",
                 subs: [
                   {
+                    index: "equipment",
+                    title: "设备查询"
+                  },{
                     index: "equipmentApply",
                     title: "设备申请查询"
                   },{
-                    index: "useApply",
+                    index: "usingApply",
                     title: "申请使用"
                   },{
                     index: "reviewApply",
@@ -105,7 +108,7 @@ export default {
               },
               {
                 icon: "el-icon-lx-cascades",
-                index: "equipment",
+                index: "equipmentMaintain",
                 title: "实验设备管理",
               },
               {

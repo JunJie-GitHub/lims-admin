@@ -52,7 +52,16 @@ const routes = [
                 },
                 component: () => import (
                     "../views/infoManagement/DealApply.vue")
-            }, {
+            },
+            {
+                path: "/equipment",
+                name: "equipment",
+                meta: {
+                    title: '设备查询'
+                },
+                component: () => import (
+                    "../views/equipmentApply/Equipment.vue")
+            },{
                 path: "/equipmentApply",
                 name: "equipmentApply",
                 meta: {
@@ -61,13 +70,13 @@ const routes = [
                 component: () => import (
                     "../views/equipmentApply/EquipmentApply.vue")
             },{
-                path: "/useApply",
-                name: "useApply",
+                path: "/usingApply",
+                name: "usingApply",
                 meta: {
                     title: '申请使用'
                 },
                 component: () => import (
-                    "../views/equipmentApply/UseApply.vue")
+                    "../views/equipmentApply/UsingApply.vue")
             },{
                 path: "/reviewApply",
                 name: "reviewApply",
@@ -87,13 +96,13 @@ const routes = [
                     "../views/Personnel.vue")
             },
             {
-                path: "/equipment",
-                name: "equipment",
+                path: "/equipmentMaintain",
+                name: "equipmentMaintain",
                 meta: {
                     title: '实验设备管理'
                 },
                 component: () => import (
-                    "../views/Equipment.vue")
+                    "../views/EquipmentMaintain.vue")
             },
             {
                 path: "/needRepaired",

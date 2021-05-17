@@ -11,34 +11,34 @@
         width="110">
     </el-table-column>
     <el-table-column
-        prop="student_name"
+        prop="studentName"
         label="学号"
         width="110">
     </el-table-column>
     <el-table-column
-        prop="equipment_name"
+        prop="equipmentName"
         label="设备名"
         width="110">
     </el-table-column>
     <el-table-column
-        prop="experiment_context"
+        prop="experimentContext"
         label="实验内容"
         width="180">
     </el-table-column>
     <el-table-column
-        prop="experiment_purpose"
+        prop="experimentPurpose"
         label="实验目的"
         width="180">
     </el-table-column>
     <el-table-column
         prop="startTime"
         label="开始使用时间"
-        width="180">
+        width="150">
     </el-table-column>
     <el-table-column
         prop="endTime"
         label="结束使用时间"
-        width="110">
+        width="150">
     </el-table-column>
     <el-table-column
         prop="state"
@@ -62,32 +62,36 @@
 
 <script>
 
+import {listEquipmentApplication} from "@/api/equipment";
+
 export default {
   name: "ReviesApply",
   data() {
     return {
       tableData: [{
         name: '张伟',
-        student_name: '17320101',
-        equipment_name: '示波器',
-        experiment_context: '',
-        experiment_purpose: '',
-        startTime: '2021-05-06 12:00:00',
-        endTime: '2021-05-06 14:00:00',
-        tutor: '刘伟',
-        state: "未审核",
-      }, {
-        name: '张伟',
-        student_name: '17320101',
-        equipment_name: '示波器',
-        experiment_context: '',
-        experiment_purpose: '',
+        studentName: '17320101',
+        equipmentName: '示波器',
+        experimentContext: '',
+        experimentPurpose: '',
         startTime: '2021-05-06 12:00:00',
         endTime: '2021-05-06 14:00:00',
         tutor: '刘伟',
         state: "未审核",
       }, ]
     }
+  },
+  methods: {
+    loadEquipmentData(){
+      listEquipmentApplication().then(response => {
+        if (response.success == true){
+          this.tableData = response.data;
+        }
+      })
+    }
+  },
+  mounted() {
+    this.loadEquipmentData()
   }
 }
 </script>

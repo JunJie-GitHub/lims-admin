@@ -58,6 +58,8 @@ export default {
                 if (valid) {
                     this.$message.success("登录成功");
                     localStorage.setItem("ms_username", this.param.username);
+                    //这里设置用户名, 学号,身份等信息(用于表单提交时提供信息)
+
                     this.$router.push("/");
                 } else {
                     this.$message.error("请输入账号和密码");

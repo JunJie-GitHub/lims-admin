@@ -20,11 +20,11 @@
         label="院系"
         width="110">
     </el-table-column>
-    <el-table-column
-        prop="capacity"
-        label="容纳人数"
-        width="100">
-    </el-table-column>
+<!--    <el-table-column-->
+<!--        prop="capacity"-->
+<!--        label="容纳人数"-->
+<!--        width="100">-->
+<!--    </el-table-column>-->
     <el-table-column
         prop="instructor"
         label="指导老师"
@@ -66,7 +66,7 @@
 
 
 <script>
-
+import { listLaboratoryApply } from '@/api/laboratory'
 export default {
   name: "applyStatu",
   data() {
@@ -75,24 +75,23 @@ export default {
         name: '光电实验室',
         address: '扬实二 2405',
         department: '电子工程学院',
-        capacity: '30',
         instructor: '扬娜拉',
         reason: '做毕设',
         state: '审核中',
         date: '2021-05-06',
         classTime: "1, 2, 3",
-      }, {
-        name: '光电实验室',
-        address: '扬实二 2405',
-        department: '电子工程学院',
-        capacity: '30',
-        instructor: '扬娜拉',
-        reason: '做毕设',
-        state: '已同意',
-        date: '2021-05-06',
-        classTime: "1, 2, 3",
       }]
     }
+  },
+  methods: {
+    laboratoryApply(){
+      listLaboratoryApply().then(response => {
+        this.tableData = response.data
+      })
+    }
+  },
+  mounted() {
+    this.laboratoryApply()
   }
 }
 </script>
