@@ -12,7 +12,7 @@
       <div class="form-box">
         <el-form ref="form" :model="form" label-width="80px">
           <el-form-item label="设备名">
-            <el-input v-model="form.name"></el-input>
+            <el-input v-model="form.equipmentName"></el-input>
           </el-form-item>
           <el-form-item label="设备位置">
             <el-input v-model="form.location"></el-input>
@@ -35,78 +35,27 @@
 </template>
 
 <script>
+import { saveEquipmentRepair} from "@/api/equipment";
+
 export default {
   name: 'RepairReport',
   data() {
     return {
-      options: [
-        {
-          value: 'guangdong',
-          label: '广东省',
-          children: [
-            {
-              value: 'guangzhou',
-              label: '广州市',
-              children: [
-                {
-                  value: 'tianhe',
-                  label: '天河区'
-                },
-                {
-                  value: 'haizhu',
-                  label: '海珠区'
-                }
-              ]
-            },
-            {
-              value: 'dongguan',
-              label: '东莞市',
-              children: [
-                {
-                  value: 'changan',
-                  label: '长安镇'
-                },
-                {
-                  value: 'humen',
-                  label: '虎门镇'
-                }
-              ]
-            }
-          ]
-        },
-        {
-          value: 'hunan',
-          label: '湖南省',
-          children: [
-            {
-              value: 'changsha',
-              label: '长沙市',
-              children: [
-                {
-                  value: 'yuelu',
-                  label: '岳麓区'
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: true,
-        type: ['步步高'],
-        resource: '小天才',
-        desc: '',
-        options: []
-      }
+      form: {}
     };
   },
   methods: {
+
     onSubmit() {
-      this.$message.success('提交成功！');
+      console.log(this.form);
+      var param = this.form;
+      saveEquipmentRepair(param).then(response => {
+        if (response.success == true){
+          this.$message.success('提交成功！');
+        }else if (response.success == false){
+          this.$message.error(response.message);
+        }
+      });
     }
   }
 };

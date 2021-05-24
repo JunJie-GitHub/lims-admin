@@ -39,19 +39,8 @@
                             <div class="grid-content grid-con-1">
                                 <i class="el-icon-user-solid grid-con-icon"></i>
                                 <div class="grid-cont-right">
-                                    <div class="grid-num">1234</div>
-                                    <div>用户访问量</div>
-                                </div>
-                            </div>
-                        </el-card>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{ padding: '0px' }">
-                            <div class="grid-content grid-con-2">
-                                <i class="el-icon-message-solid grid-con-icon"></i>
-                                <div class="grid-cont-right">
-                                    <div class="grid-num">321</div>
-                                    <div>系统消息</div>
+                                    <div class="grid-num">2367</div>
+                                    <div>学生数量</div>
                                 </div>
                             </div>
                         </el-card>
@@ -59,14 +48,25 @@
                     <el-col :span="8">
                         <el-card shadow="hover" :body-style="{ padding: '0px' }">
                             <div class="grid-content grid-con-3">
-                                <i class="el-icon-s-goods grid-con-icon"></i>
+                                <i class="el-icon-user-solid grid-con-icon"></i>
                                 <div class="grid-cont-right">
-                                    <div class="grid-num">5000</div>
-                                    <div>数量</div>
+                                    <div class="grid-num">132</div>
+                                    <div>老师数量</div>
                                 </div>
                             </div>
                         </el-card>
                     </el-col>
+                  <el-col :span="8">
+                    <el-card shadow="hover" :body-style="{ padding: '0px' }">
+                      <div class="grid-content grid-con-2">
+                        <i class="el-icon-message-solid grid-con-icon"></i>
+                        <div class="grid-cont-right">
+                          <div class="grid-num">2</div>
+                          <div>系统消息</div>
+                        </div>
+                      </div>
+                    </el-card>
+                  </el-col>
                 </el-row>
                 <el-card shadow="hover" style="height:403px;">
                     <template #header>
@@ -102,28 +102,15 @@
                 </el-card>
             </el-col>
         </el-row>
-        <el-row :gutter="20">
-            <el-col :span="12">
-                <el-card shadow="hover">
-                    <schart ref="bar" class="schart" canvasId="bar" :options="options"></schart>
-                </el-card>
-            </el-col>
-            <el-col :span="12">
-                <el-card shadow="hover">
-                    <schart ref="line" class="schart" canvasId="line" :options="options2"></schart>
-                </el-card>
-            </el-col>
-        </el-row>
     </div>
 </template>
 
 <script>
-import Schart from "vue-schart";
 export default {
     name: "dashboard",
     data() {
         return {
-            name: localStorage.getItem("ms_username"),
+            name: localStorage.getItem("ms_name"),
             todoList: [
                 {
                     title: "今天要修复100个bug",
@@ -226,11 +213,24 @@ export default {
         };
     },
     components: {
-        Schart
+        // Schart
     },
     computed: {
         role() {
-            return this.name === "admin" ? "超级管理员" : "普通用户";
+            // return this.name === "admin" ? "超级管理员" : "普通用户";
+          let identifyId = localStorage.getItem("ms_identity");
+          switch (identifyId) {
+            case "1": {
+              return "系统管理员"
+            }case "2": {
+              return "老师"
+            }case "3": {
+              return "学生"
+            }case "4": {
+              return "设备管理员"
+            }
+          }
+          return "用户"
         }
     },
 

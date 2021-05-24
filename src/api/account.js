@@ -16,3 +16,12 @@ export const listUserInfos = () => {
         method: 'post',
     });
 };
+
+//登录并获取用户信息
+export const loginValidate = (param) => {
+    return request({
+        url: prefix + '/account/loginValidate',
+        method: 'post',
+        data: param
+    });
+};

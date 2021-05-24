@@ -31,7 +31,7 @@ export default {
     },
     computed: {
         tagsList() {
-          // console.log("=================item.name: " + this.$store.state.tagsList.map(item => item.name))
+          // console.log("=================item.name: " + this.$store.state.account.name)
             return this.$store.state.tagsList.map(item => item.name);
         },
         collapse() {

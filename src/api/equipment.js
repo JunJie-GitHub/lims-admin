@@ -34,3 +34,19 @@ export const insertEquipmentApplication = (param) => {
     });
 };
 
+//设备维修列表
+export const listEquipmentRepair = () => {
+    return request({
+        url: prefix + '/equipment/listEquipmentRepair',
+        method: 'post',
+    });
+};
+
+//插入设备维修信息
+export const saveEquipmentRepair = (param) => {
+    return request({
+        url: prefix + '/equipment/saveEquipmentRepair',
+        method: 'post',
+        data: param
+    });
+};

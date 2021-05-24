@@ -62,6 +62,35 @@
       </template>
     </el-table-column>
   </el-table>
+  <!-- 编辑弹出框 -->
+  <el-dialog title="编辑" v-model="editVisible" width="30%">
+    <el-form ref="form" :model="form" label-width="70px">
+      <el-form-item label="实验室">
+        <el-input v-model="form.name"></el-input>
+      </el-form-item>
+      <el-form-item label="地址">
+        <el-input v-model="form.address"></el-input>
+      </el-form-item>
+      <el-form-item label="院系">
+        <el-input v-model="form.department"></el-input>
+      </el-form-item>
+      <el-form-item label="申请理由">
+        <el-input v-model="form.reason"></el-input>
+      </el-form-item>
+      <el-form-item label="使用日期">
+        <el-input v-model="form.date"></el-input>
+      </el-form-item>
+      <el-form-item label="使用课时">
+        <el-input v-model="form.classTime"></el-input>
+      </el-form-item>
+    </el-form>
+    <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="editVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="saveEdit">确 定</el-button>
+                </span>
+    </template>
+  </el-dialog>
 </template>
 
 
@@ -80,7 +109,11 @@ export default {
         state: '审核中',
         date: '2021-05-06',
         classTime: "1, 2, 3",
-      }]
+      }],
+
+      editVisible: false,
+      form: {},
+      idx: -1,
     }
   },
   methods: {
@@ -88,7 +121,35 @@ export default {
       listLaboratoryApply().then(response => {
         this.tableData = response.data
       })
-    }
+    },
+
+    handleDelete(index, row){
+      console.log(index+ " "+ row.name)
+      // this.tableData.splice(index,1)
+      // 二次确认删除
+      this.$confirm("确定要删除吗？", "提示", {
+        type: "warning"
+      })
+          .then(() => {
+            //调用删除数据库的数据接口
+            this.$message.success("删除成功");
+            this.tableData.splice(index, 1);
+          })
+          .catch(() => {});
+    },
+    handleEdit(index, row){
+      console.log(index+ " "+ row.name)
+      this.idx = index;
+      this.form = row;
+      this.editVisible = true;
+      //调用删除数据库的数据接口
+    },
+    // 保存编辑
+    saveEdit() {
+      this.editVisible = false;
+      this.$message.success(`修改第 ${this.idx + 1} 行成功`);
+      this.$set(this.tableData, this.idx, this.form);
+    },
   },
   mounted() {
     this.laboratoryApply()

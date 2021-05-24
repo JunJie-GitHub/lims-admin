@@ -2,7 +2,12 @@ import {createStore} from 'vuex'
 
 export default createStore({
     state: {
-        tagsList: [],
+        tagsList: [],   //标签列表
+        // account: {
+        //     name: '黎俊杰 store',
+        //     studentName: '17320110',
+        //     identity: 3
+        //     },    //账户信息
         collapse: false
     },
     mutations: {

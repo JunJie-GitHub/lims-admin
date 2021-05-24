@@ -15,12 +15,7 @@
             class="handle-del mr10"
             @click="delAllSelection"
         >批量删除</el-button>
-        <el-select v-model="query.address" placeholder="身份" class="handle-select mr10">
-          <el-option key="1" label="老师" value="老师"></el-option>
-          <el-option key="2" label="学生" value="学生"></el-option>
-          <el-option key="3" label="设备管理员" value="设备管理员"></el-option>
-        </el-select>
-        <el-input v-model="query.name" placeholder="用户名或姓名" class="handle-input mr10"></el-input>
+        <el-input v-model="query.name" placeholder="设备名" class="handle-input mr10"></el-input>
         <el-button type="primary" icon="el-icon-search" @click="handleSearch">搜索</el-button>
       </div>
       <el-table
@@ -68,11 +63,17 @@
     <!-- 编辑弹出框 -->
     <el-dialog title="编辑" v-model="editVisible" width="30%">
       <el-form ref="form" :model="form" label-width="70px">
-        <el-form-item label="用户名">
+        <el-form-item label="设备名">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
-        <el-form-item label="地址">
-          <el-input v-model="form.address"></el-input>
+        <el-form-item label="设备用途">
+          <el-input v-model="form.purpose"></el-input>
+        </el-form-item>
+        <el-form-item label="数量">
+          <el-input v-model="form.quantity"></el-input>
+        </el-form-item>
+        <el-form-item label="存储位置">
+          <el-input v-model="form.location"></el-input>
         </el-form-item>
       </el-form>
       <template #footer>
@@ -86,7 +87,7 @@
 </template>
 
 <script>
-import { fetchData } from "../api/index";
+import { listEquipment } from "@/api/equipment";
 export default {
   name: "Equipment",
   data() {
@@ -97,7 +98,7 @@ export default {
         pageIndex: 1,
         pageSize: 10
       },
-      tableData: [],
+      tableData: [],  //设备列表
       multipleSelection: [],
       delList: [],
       editVisible: false,
@@ -111,12 +112,12 @@ export default {
     this.getData();
   },
   methods: {
-    // 获取 easy-mock 的模拟数据
+    // 获取设备列表
     getData() {
-      fetchData(this.query).then(res => {
+      listEquipment().then(res => {
         console.log(res);
-        this.tableData = res.list;
-        this.pageTotal = res.pageTotal || 50;
+        this.tableData = res.data;
+        // this.pageTotal = res.pageTotal || 50;
       });
     },
     // 触发搜索按钮

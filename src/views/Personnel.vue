@@ -15,7 +15,7 @@
             class="handle-del mr10"
             @click="delAllSelection"
         >批量删除</el-button>
-        <el-select v-model="query.address" placeholder="身份" class="handle-select mr10">
+        <el-select v-model="query.identityName" placeholder="身份" class="handle-select mr10">
           <el-option key="1" label="老师" value="老师"></el-option>
           <el-option key="2" label="学生" value="学生"></el-option>
           <el-option key="3" label="设备管理员" value="设备管理员"></el-option>
@@ -32,12 +32,13 @@
           @selection-change="handleSelectionChange"
       >
         <el-table-column type="selection" width="55" align="center"></el-table-column>
-        <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
+<!--        <el-table-column prop="userId" label="ID" width="55" align="center"></el-table-column>-->
+        <el-table-column type="index" label="ID" width="55" align="center"></el-table-column>
         <el-table-column prop="name" label="姓名"></el-table-column>
         <el-table-column prop="username" label="用户名"></el-table-column>
         <el-table-column prop="password" label="密码"></el-table-column>
         <el-table-column prop="email" label="邮箱"></el-table-column>
-        <el-table-column prop="identity" label="身份"></el-table-column>
+        <el-table-column prop="identityName" label="身份"></el-table-column>
         <el-table-column label="操作" width="180" align="center">
           <template #default="scope">
             <el-button
@@ -69,12 +70,21 @@
     <!-- 编辑弹出框 -->
     <el-dialog title="编辑" v-model="editVisible" width="30%">
       <el-form ref="form" :model="form" label-width="70px">
-        <el-form-item label="用户名">
+        <el-form-item label="姓名">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
-        <el-form-item label="地址">
-          <el-input v-model="form.address"></el-input>
+        <el-form-item label="用户名">
+          <el-input v-model="form.username"></el-input>
         </el-form-item>
+        <el-form-item label="密码">
+          <el-input v-model="form.password"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱">
+          <el-input v-model="form.email"></el-input>
+        </el-form-item>
+<!--        <el-form-item label="身份">-->
+<!--          <el-input v-model="form.identityName"></el-input>-->
+<!--        </el-form-item>-->
       </el-form>
       <template #footer>
                 <span class="dialog-footer">
@@ -87,13 +97,14 @@
 </template>
 
 <script>
-import { fetchData } from "../api/index";
+// import { fetchData } from "../api/index";
+import {listUserInfos} from "@/api/account";
 export default {
   name: "Personnel",
   data() {
     return {
       query: {
-        address: "",
+        identityName: "",
         name: "",
         pageIndex: 1,
         pageSize: 10
@@ -112,13 +123,17 @@ export default {
     this.getData();
   },
   methods: {
+
     // 获取 easy-mock 的模拟数据
     getData() {
-      fetchData(this.query).then(res => {
-        console.log(res);
-        this.tableData = res.list;
-        this.pageTotal = res.pageTotal || 50;
-      });
+      // fetchData(this.query).then(res => {
+      //   console.log(res);
+      //   this.tableData = res.list;
+      //   this.pageTotal = res.pageTotal || 50;
+      // });
+      listUserInfos().then(response => {
+        this.tableData = response.data
+      })
     },
     // 触发搜索按钮
     handleSearch() {
@@ -168,6 +183,9 @@ export default {
       this.$set(this.query, "pageIndex", val);
       this.getData();
     }
+  },
+  mounted() {
+
   }
 };
 </script>

@@ -28,7 +28,7 @@
                 <!-- 用户名下拉菜单 -->
                 <el-dropdown class="user-name" trigger="click" @command="handleCommand">
                     <span class="el-dropdown-link">
-                        {{username}}
+                        {{getname}}
                         <i class="el-icon-caret-bottom"></i>
                     </span>
                     <template #dropdown>
@@ -49,14 +49,19 @@ export default {
     data() {
         return {
             fullscreen: false,
-            name: "linxin",
+            name: "username",
             message: 2
         };
     },
     computed: {
-        username() {
-            let username = localStorage.getItem("ms_username");
-            return username ? username : this.name;
+        getname() {
+            // let username = localStorage.getItem("ms_username");
+            let name = localStorage.getItem("ms_name");
+            console.log(localStorage.getItem("ms_name")+" "+
+                localStorage.getItem("ms_studentName")+" "+
+                localStorage.getItem("ms_identity"));
+            // console.log("=================item.name: " + this.$store.state.account.name)
+            return name ? name : this.name;
         },
         collapse() {
             return this.$store.state.collapse;
